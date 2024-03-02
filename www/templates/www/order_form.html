@@ -1,0 +1,18 @@
+{% extends 'www/base.html' %}
+{% load static %}
+{% block content %}
+    <header>
+        <h1>IT-Run Restaurant</h1>
+        <a href="{% url 'food_list' %}" class="back-btn">Назад к меню</a>
+    </header>
+    <main>
+        <form action="{% url 'order_form' %}" method="post">
+            {% csrf_token %}
+            <label for="name" class="form-label">Имя:</label>
+            <input type="text" id="name" name="fio" class="form-input" required>
+            <label for="address" class="form-label">Адрес:</label>
+            <input type="text" id="address" name="address" class="form-input" required>
+            <input type="submit" value="Выборать блюда" class="form-submit">
+        </form>
+    </main>
+{% endblock %}

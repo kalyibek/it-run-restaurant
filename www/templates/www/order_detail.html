@@ -1,0 +1,52 @@
+{% extends 'www/base.html' %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h1>IT-Run Restaurant</h1>
+        <a href="{% url 'food_list' %}" class="back-btn">Назад к меню</a>
+        <a href="{% url 'order_list' %}" class="back-btn">Назад к заказам</a>
+    </header>
+    <main>
+        <div class="order-details">
+            <h1 class="order-details__title">Детали заказа</h1>
+            <div class="order-details__info">
+                <div class="order-details__row">
+                    <span class="order-details__label">Имя:</span>
+                    <span class="order-details__value">{{ order.fio }}</span>
+                </div>
+                <div class="order-details__row">
+                    <span class="order-details__label">Адрес:</span>
+                    <span class="order-details__value">{{ order.address }}</span>
+                </div>
+                <div class="order-details__row">
+                    <span class="order-details__label">Общая цена:</span>
+                    <span class="order-details__value">{{ order.total_price }} KGS</span>
+                </div>
+            </div>
+            <div class="order-details__foods">
+                <h2 class="order-details__foods-title">Список блюд</h2>
+                <table class="order-details__foods-table">
+                    <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Фото</th>
+                            <th>Количество</th>
+                            <th>Цена</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order_food in order_foods %}
+                        <tr>
+                            <td>{{ order_food.food.name }}</td>
+                            <td><img src="{{ order_food.food.image.url }}" alt="{{ order_food.food.name }}"></td>
+                            <td>{{ order_food.quantity }}</td>
+                            <td>{{ order_food.price }} KGS</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock %}

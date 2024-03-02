@@ -1,0 +1,42 @@
+{% extends 'www/base.html' %}
+{% load static %}
+{% block content %}
+    <header>
+        <h1>IT-Run Restaurant</h1>
+        <a href="{% url 'food_list' %}" class="back-btn">Назад к меню</a>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Фото</th>
+                    <th>Состав</th>
+                    <th>Вес</th>
+                    <th>Цена</th>
+                    <th>Выбрать</th>
+                    <th>Порции</th>
+                </tr>
+            </thead>
+            <tbody>
+                <form action="{% url 'order_foods' %}" method="post">
+                    {% csrf_token %}
+                    <tbody>
+                        {% for food in foods %}
+                        <tr>
+                            <td>{{ food.name }}</td>
+                            <td class="img-td"><img src="{{ food.image.url }}" alt="{{ food.name }}" class="img-table"></td>
+                            <td>{{ food.compound }}</td>
+                            <td>{{ food.weight }} г</td>
+                            <td>{{ food.price }} KGS</td>
+                            <td><input type="checkbox" name="foods" value="{{ food.id }}"></td>
+                            <td><input type="number" name="quantity{{ food.id }}" value="1"></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <input type="submit" value="Оформить заказ" class="form-submit">
+                </form>
+            </tbody>
+        </table>
+    </main>
+{% endblock %}

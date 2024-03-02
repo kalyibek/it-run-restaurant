@@ -1,0 +1,187 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.dish {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+}
+
+.dish img {
+    border-radius: 10px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+.dish h2 {
+    margin-bottom: 10px;
+}
+
+.dish p {
+    margin: 5px 0;
+}
+
+.order-btn,
+.back-btn {
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.order-btn:hover,
+.back-btn:hover {
+    background-color: #555;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.form-submit {
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.form-submit:hover {
+    background-color: #555;
+}
+
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr: {
+    height: 120px;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+.img-table {
+    height: 100px;
+}
+
+.img-td {
+    width: 110px;
+}
+
+.table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tr:hover {
+    background-color: #ddd;
+}
+
+.order-details__foods-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.order-details__foods-table th, .order-details__foods-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.order-details__foods-table th {
+    background-color: #f2f2f2;
+}
+
+.order-details__foods-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.order-details__foods-table tr:hover {
+    background-color: #ddd;
+}
+
+.order-details__foods-table img {
+    max-width: 100px;
+    height: auto;
+}

@@ -1,0 +1,31 @@
+{% extends 'www/base.html' %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h1>IT-Run Restaurant</h1>
+        <a href="{% url 'food_list' %}" class="back-btn">Назад к меню</a>
+    </header>
+    <main>
+         <table class="table">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Адрес</th>
+                    <th>Общая цена</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.fio }}</td>
+                    <td>{{ order.address }}</td>
+                    <td>{{ order.total_price }}</td>
+                    <td><a href="{% url 'order_detail' order.id %}" class="order-btn">Смотреть</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+{% endblock %}
