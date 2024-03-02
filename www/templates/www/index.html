@@ -16,5 +16,13 @@
                 <p>Цена: {{ food.price }} KGS</p>
             </section>
         {% endfor %}
+        {% for drink in drinks %}
+            <section class="dish">
+                <h2>{{ drink.name }}</h2>
+                <img src="{{ drink.image.url }}" alt="{{ drink.name }}">
+                <p>Вес: {{ drink.weight }} г</p>
+                <p>Цена: {{ drink.price }} KGS</p>
+            </section>
+        {% endfor %}
     </main>
 {% endblock %}

@@ -18,3 +18,14 @@ def create_order_food(food, order, quantity):
         quantity=quantity,
         price=price
     )
+
+
+def create_order_drink(drink, order, quantity):
+    price = drink.price * int(quantity)
+
+    return models.OrderDrink(
+        drink=drink,
+        order=order,
+        quantity=quantity,
+        price=price
+    )

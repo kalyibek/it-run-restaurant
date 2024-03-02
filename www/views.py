@@ -10,6 +10,11 @@ class FoodListView(ListView):
     template_name = 'www/index.html'
     context_object_name = 'foods'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['drinks'] = models.Drink.objects.all()
+        return context
+
 
 class OrderList(ListView):
     model = models.Order
@@ -25,7 +30,9 @@ class OrderDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         order = self.get_object()
         order_foods = order.orderfood_set.all()
+        order_drinks = order.orderdrink_set.all()
         context['order_foods'] = order_foods
+        context['order_drinks'] = order_drinks
         return context
 
 
@@ -43,11 +50,13 @@ class OrderFoodCreateView(View):
     @staticmethod
     def get(request):
         foods = models.Food.objects.all()
-        return render(request, 'www/foods_form.html', {'foods': foods})
+        drinks = models.Drink.objects.all()
+        return render(request, 'www/foods_form.html', {'foods': foods, 'drinks': drinks})
 
     @staticmethod
     def post(request):
         food_ids = request.POST.getlist('foods')
+        drink_ids = request.POST.getlist('drinks')
         order = utils.create_order(request.session['fio'], request.session['address'], 0)
 
         total_price = 0
@@ -56,6 +65,12 @@ class OrderFoodCreateView(View):
             order_food = utils.create_order_food(food, order, request.POST[f'quantity{food_id}'])
             total_price += order_food.price
             order_food.save()
+
+        for drink_id in drink_ids:
+            drink = get_object_or_404(models.Drink, id=drink_id)
+            order_drink = utils.create_order_drink(drink, order, request.POST[f'quantity{drink_id}'])
+            total_price += order_drink.price
+            order_drink.save()
 
         order.total_price = total_price
         order.save()

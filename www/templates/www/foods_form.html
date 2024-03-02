@@ -33,10 +33,48 @@
                             <td><input type="number" name="quantity{{ food.id }}" value="1"></td>
                         </tr>
                         {% endfor %}
+
+                        {% for drink in drinks %}
+                        <tr>
+                            <td>{{ drink.name }}</td>
+                            <td class="img-td"><img src="{{ drink.image.url }}" alt="{{ drink.name }}" class="img-table"></td>
+                            <td>---</td>
+                            <td>{{ drink.weight }} л</td>
+                            <td>{{ drink.price }} KGS</td>
+                            <td><input type="checkbox" name="drinks" value="{{ drink.id }}"></td>
+                            <td><input type="number" name="quantity{{ drink.id }}" value="1"></td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                     <input type="submit" value="Оформить заказ" class="form-submit">
                 </form>
             </tbody>
         </table>
+<!--        <table>-->
+<!--            <thead>-->
+<!--                <tr>-->
+<!--                    <th>Название</th>-->
+<!--                    <th>Вес</th>-->
+<!--                    <th>Фото</th>-->
+<!--                    <th>Цена</th>-->
+<!--                    <th>Выбрать</th>-->
+<!--                    <th>Порции</th>-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--                <tbody>-->
+<!--                    {% for drink in drinks %}-->
+<!--                    <tr>-->
+<!--                        <td>{{ drink.name }}</td>-->
+<!--                        <td>{{ drink.weight }} г</td>-->
+<!--                        <td class="img-td"><img src="{{ drink.image.url }}" alt="{{ drink.name }}" class="img-table"></td>-->
+<!--                        <td>{{ drink.price }} KGS</td>-->
+<!--                        <td><input type="checkbox" name="drinks" value="{{ drink.id }}"></td>-->
+<!--                        <td><input type="number" name="quantity{{ drink.id }}" value="1"></td>-->
+<!--                    </tr>-->
+<!--                    {% endfor %}-->
+<!--                </tbody>-->
+<!--            </tbody>-->
+<!--        </table>-->
     </main>
 {% endblock %}

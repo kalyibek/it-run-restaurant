@@ -44,6 +44,14 @@
                             <td>{{ order_food.price }} KGS</td>
                         </tr>
                         {% endfor %}
+                        {% for order_drink in order_drinks %}
+                        <tr>
+                            <td>{{ order_drink.drink.name }}</td>
+                            <td><img src="{{ order_drink.drink.image.url }}" alt="{{ order_drink.drink.name }}"></td>
+                            <td>{{ order_drink.quantity }}</td>
+                            <td>{{ order_drink.price }} KGS</td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
